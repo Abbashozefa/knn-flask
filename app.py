@@ -28,7 +28,12 @@ def predict():
     proline=float(request.form['proline'])
     
     prediction=model.predict([[alcohol, malic_acid, ash, alcalinity_of_ash, magnesium, total_phenols, flavanoids, nonflavanoid_phenols, proanthocyanins, color_intensity, hue, od, proline]])
-    output=round(prediction[0],3)
+    if(prediction[0] == 0):
+        output='A'
+    elif(prediction[0] == 1):
+        output='B'
+    else:
+        output='C'
     return render_template('index.html',prediction_text=f'THE WINE IS OF CLASS {output}')       
 
     
