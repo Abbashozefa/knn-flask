@@ -11,7 +11,7 @@ app=Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/predicts',methods=['POST'])
+@app.route('/predicts',methods=['POST','GET'])
 def predict():
     alcohol=float(request.form['alcohol'])
     malic_acid=float(request.form['malic_acid'])
